@@ -17,6 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let taskViewModel = TaskListViewModel.init(withTasks: nil)
+        //rootViewController
+        let rootTab : UITabBarController = self.window?.rootViewController as! UITabBarController
+        let rootNavigation : UINavigationController = rootTab.viewControllers![0] as! UINavigationController
+        let rootVC : TaskListViewController = rootNavigation.viewControllers[0] as! TaskListViewController
+        
+        rootVC.taskListViewModel = taskViewModel
+        
         return true
     }
 

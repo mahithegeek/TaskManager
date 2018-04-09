@@ -8,8 +8,13 @@
 
 import UIKit
 
-class TaskListViewController: UITableViewController {
+class TaskListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+    
+    
 
+    var taskListViewModel : TaskListViewModel!
+    @IBOutlet var taskListView : UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,7 +22,7 @@ class TaskListViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationController?.title = "Tasks"
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,16 +32,20 @@ class TaskListViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return self.taskListViewModel.getNumberofSections()
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.taskListViewModel.getNumberOfRows()
     }
 
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell();
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

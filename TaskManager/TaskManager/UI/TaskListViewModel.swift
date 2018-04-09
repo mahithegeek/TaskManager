@@ -10,12 +10,26 @@ import UIKit
 import Foundation
 
 class TaskListViewModel {
-    var tasks : Array<Task>
+    var tasks : Array<Task>?
     
-    init(withTasks tasks : Array<Task>) {
+    init(withTasks tasks : Array<Task>?) {
         self.tasks = tasks
     }
     
-    //fileprivate
+    func getNumberOfRows()->Int
+    {
+        guard let rows = self.tasks?.count
+            else{
+                return 0
+        }
+        
+        return rows
+    }
+    
+    func getNumberofSections()->Int
+    {
+        return 1 //one section right now
+    }
+    
 }
 
