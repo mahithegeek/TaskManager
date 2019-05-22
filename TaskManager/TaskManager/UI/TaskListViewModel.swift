@@ -31,5 +31,10 @@ class TaskListViewModel {
         return 1 //one section right now
     }
     
+    func addTask(){
+        let newTask:Task = Task(name:"test",details:"DO this")
+        self.tasks?.append(newTask)
+    }
+    
 }
 

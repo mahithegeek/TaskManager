@@ -12,5 +12,9 @@ import CoreData
 
 
 public class Task: NSManagedObject {
-
+    convenience init(name:String,details:String){
+        self.init()
+        self.name = name
+        self.details = details
+    }
 }
